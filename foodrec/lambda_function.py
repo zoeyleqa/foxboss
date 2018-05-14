@@ -13,6 +13,14 @@ Sample usage of the program:
 `python sample.py --term="bars" --location="San Francisco, CA"`
 """
 
+"""
+Client ID
+9HzBbblHm5KlXos-fjwKfQ
+
+API Key
+
+"""
+
 # from __future__ import print_function
 from botocore.vendored import requests
 import argparse
@@ -20,6 +28,7 @@ import json
 import pprint
 import sys
 import urllib
+import random
 
 # import urllib.request
 # contents = urllib.request.urlopen("https://api.yelp.com/v3/businesses/search").read()
@@ -56,6 +65,24 @@ BUSINESS_PATH = '/v3/businesses/'  # Business ID will come after slash.
 DEFAULT_TERM = 'dinner'
 DEFAULT_LOCATION = 'San Francisco, CA'
 SEARCH_LIMIT = 5
+
+CONFIRM_MSG = ['If it pleases the Crown then ',
+                'Really? You mean it? Honest and for true? ',
+                'But soft! What piercing light through yonder window breaks?! ',
+                'May I favor master with a tender kiss on the forehead. ',
+                'Nothing is strange to the wise. ',
+                'Oh joy, oh rapture. ',
+                'Finally! Praise the lord. ']
+                
+DENIED_MSG = ['Well, if your majesty is not pleased, we do have something else. ',
+                'What if I sing to you? No? Fine! ',
+                'Thank you. May I have another? How about ',
+                'Pleeeeeeease? No? ',
+                'You\'d do it for Randolph Scott! What about ',
+                'It seems my princess is in another castle. ',
+                'This boldness is not courage. ',
+                'Well... a stopped clock is right twice a day. ']                
+
 
 def lambda_handler(data, context):
     currIntent = data['currentIntent']
@@ -107,7 +134,7 @@ def lambda_handler(data, context):
    
         categories = ", ".join(categories)
         
-        msg = "Starting off, do "+categories+" sound good?"
+        msg = "Starting off, "+categories+" sound good?"
         
         sessAttr['businesses'] = json.dumps(businesses)
         sessAttr['curr'] = 0 
@@ -132,7 +159,7 @@ def lambda_handler(data, context):
         business_id = businesses[curr]['id']
         restaurant = get_business(API_KEY, business_id)
         
-        msg = "Finally, praise the lord\nHere's some details about the place.\nRating: {}\nPhone Number: {}".format(restaurant['rating'],restaurant['phone'])
+        msg = random.choice(CONFIRM_MSG)+"\nHere's some details about the place.\nRating: {}\nPhone Number: {}".format(restaurant['rating'],restaurant['phone'])
          
         adr = " ".join(restaurant['location']['display_address'])
         ggsearch = "https://maps.google.com/?q="+ adr.replace(" ","+")       
@@ -156,7 +183,7 @@ def lambda_handler(data, context):
    
             categories = ", ".join(categories)
         
-            msg = "Well, if your majesty is not pleased, we do have something else. "+categories+" perhaps?"
+            msg = random.choice(DENIED_MSG)+categories+"?"
             
             # sessAttr['businesses'] = businesses
             sessAttr['curr'] = curr  
@@ -174,7 +201,7 @@ def lambda_handler(data, context):
 
             return confirm(sessAttr, "ConfirmIntent", msg, name, slots, resCard)
         else:
-            return close(sessAttr, "Failed", "We're out of options because the queen is picky")
+            return close(sessAttr, "Failed", "We're out of options. The queen is too picky.")
   
 def confirm(sessAttr, retType, msg, intentName, slots, responseCard):
     msgContent = {"contentType" : "PlainText"}

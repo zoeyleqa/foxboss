@@ -64,11 +64,9 @@ def lambda_handler(event, context):
         slots['Name'] = name
         return elicit_intent(sessAttr,event['currentIntent']['name'],slots, "WHATZAPPP?? Feeling hungry "+name+"? Whataya wanna eat?")
         
-    elif itemList is None and name is not None:
+    elif item is None and name is not None:
         print ("insert")
         res = insertUserHandler(event, context)
-        name = item['name']
-        slots['Name'] = name
         return elicit_intent(sessAttr, event['currentIntent']['name'],slots, slots['Name']+"!!! My new bro, wanna eat something?")       
         
     else:
