@@ -30,6 +30,6 @@ Future Changes
 ----------------
   ***Foxboss*** functionalities can be expanded to taking specific food order, saving favorite places in the database, and remember visited places to suggest if the user is in the mood "craving for something but don't know what it is". Furthermore, it could be implemented into Alexa, expand to other messenging platform like Facebook (which I've failed to do after 10hrs) or mobile applications.
 
-Made by [Quynh-Anh (Zoey) Le] (https://github.com/zoeyleqa)
+Made by [Quynh-Anh (Zoey) Le](https://github.com/zoeyleqa)
 ----------------------------
 ヾ(◍°∇°◍)ﾉﾞ
