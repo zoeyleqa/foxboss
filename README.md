@@ -5,6 +5,9 @@
 
 Overview
 ----------
+
+![overview](pictures/overview.PNG)
+
   Do you have that annoying friend who says "whatever" when you ask what he wants to eat but then complains or shuts down all your suggestions? Or do you sometime just get hungry but don't know what to eat in the area?
 ***Foxboss*** is a chatbot (currently on Slack only) who looks up on Yelp using your provided location to find good stuff in the area and suggest them to you. He likes to put salt in his words with some snide comments because he's not as cool as your friends who have suffered enough from your pickiness.  
   
