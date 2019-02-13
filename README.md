@@ -37,9 +37,11 @@ Demo
 ----------------
 
 After standard greetings, ***Foxboss*** asks for your location, specifically the city you're in. Then, it starts giving food suggestion along with an image from the restaurant. If you say "No", it gives you a sassy comment and the next suggestion. If you say "Yes", it gives you the restaurant details.
+
 ![demo1](pictures/foxboss1.gif)
 
 After 5 suggestions (SEARCHLIMIT can expand), the chatbot will stop suggesting and give the user a final sassy comment.
+
 ![demo2](pictures/foxboss2.gif)
 
 Future Changes
