@@ -15,24 +15,31 @@ Used Services
 - Amazon Lex
 - DynamoDB
 - Lambda
-![AWS Services](pictures/AWS_use.PNG)
+![AWS Services](pictures/AWS_use.png)
 
 How it works 
 -------------
-![AWS Services](pictures/usage_example.PNG)
+![AWS Services](pictures/usage_example.png)
+
+
+Amazon Lex was designed with 2 intents: `greetings` and `whatever`. 
 
 ![AWS Services](pictures/AWS_lex_greetings.PNG)
 
-Amazon Lex was designed with 2 intents: `greetings` and `whatever`. 
 - Greeting is used to greet the user. With Lex, the chatbot can understands casual greeting quote like "hey", "hi", "Hi there it's Jake", etc. and extract the name of the user if provided. If not, it will use a lambda function in folder `greetings` to see if 
 the user is new (user's name isn't in the database) or has spoken to the bot before by checking DynamoDB. The user's name will be inserted into the database with a specific ID if it's not in it. Else, ***Foxboss*** will address the user by name getting from the database with a cool greeting swag. Following that, the bot will ask what the user wants to eat. By saying sample utterances: "whatever", "I don't care", "Anything", "I'm hungry", the user will be switch to the `whatever` intent mode.
 
 ![AWS Services](pictures/AWS_lex_whatever.PNG)
 
 - ***Foxboss*** will ask for the user's location using Lex and save in the slot `location`. Next, a fulfillment lambda function takes the location, sends a query to Yelp using Yelp Fusion API, receives restaurants' details (SEARCHLIMIT = 5), presents restaurant's categories and picture to the user with sassiness. The restaurants' details are put in a list `businesses` and save into the `session_attributes` along with the current restaurant suggestion `curr`. If the user says "No", the bot will suggests the next restaurant in the list. If the user rejects all available suggestions, the bot will stop and again, give a sassy comments about that. If the user say "Yes" on a restaurant, ***Foxboss*** will give him a few details of the restaurant and the address. A google map link is also included.
+
+Demo
+----------------
+
+After standard greetings, ***Foxboss*** asks for your location, specifically the city you're in. Then, it starts giving food suggestion along with an image from the restaurant. If you say "No", it gives you a sassy comment and the next suggestion. If you say "Yes", it gives you the restaurant details.
 ![demo1](pictures/foxboss1.gif)
 
-After 5 suggestions (SEARCHLIMIT can be expand), the chatbot will stop and give the user a final sassy comment.
+After 5 suggestions (SEARCHLIMIT can expand), the chatbot will stop suggesting and give the user a final sassy comment.
 ![demo2](pictures/foxboss2.gif)
 
 Future Changes
