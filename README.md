@@ -55,7 +55,7 @@ Future Changes
   * remember visited places to suggest if the user is in the mood "craving for something but don't know what it is". 
   * could be implemented into Alexa, expand to other messenging platform like Facebook or mobile applications.
 
-***Special thanks to Andrew Del Bene for the chatbot's sassy comments input***
+***Special thanks to Andrew John Del Bene for the chatbot's sassy comments input***
 
 Made by [Quynh-Anh (Zoey) Le](https://github.com/zoeyleqa)
 ----------------------------
