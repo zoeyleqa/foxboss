@@ -6,7 +6,9 @@
 Overview
 ----------
 
-![overview](pictures/overview.png)
+<p align="center">
+  <img width="460" height="300" src="pictures/overview.png">
+</p>
 
   Do you have that annoying friend who says "whatever" when you ask what he wants to eat but then complains or shuts down all your suggestions? Or do you sometime just get hungry but don't know what to eat in the area?
 ***Foxboss*** is a chatbot (currently on Slack only) who looks up on Yelp using your provided location to find good stuff in the area and suggest them to you. He likes to put salt in his words with some snide comments because he's not as cool as your friends who have suffered enough from your pickiness.  
@@ -15,15 +17,21 @@ Overview
   
 Used Services
 -------------
-- Amazon Lex
-- DynamoDB
-- Lambda
-![AWS Services](pictures/AWS_use.png)
+* Amazon Lex
+* DynamoDB
+* Lambda
+
+<p align="center">
+  <img width="500" height="350" src="pictures/AWS_use.png">
+</p>
+
 
 How it works 
 -------------
-![AWS Services](pictures/usage_example.png)
 
+<p align="center">
+  <img width="500" height="350" src="pictures/usage_example.png">
+</p>
 
 Amazon Lex was designed with 2 intents: `greetings` and `whatever`. 
 
@@ -41,11 +49,15 @@ Demo
 
 After standard greetings, ***Foxboss*** asks for your location, specifically the city you're in. Then, it starts giving food suggestion along with an image from the restaurant. If you say "No", it gives you a sassy comment and the next suggestion. If you say "Yes", it gives you the restaurant details.
 
-![demo1](pictures/foxboss1.gif)
+<p align="center">
+  <img width="500" height="350" src="pictures/foxboss1.gif">
+</p>
 
 After 5 suggestions (SEARCHLIMIT can expand), the chatbot will stop suggesting and give the user a final sassy comment.
 
-![demo2](pictures/foxboss2.gif)
+<p align="center">
+  <img width="500" height="350" src="pictures/foxboss2.gif">
+</p>
 
 Future Changes
 ----------------
